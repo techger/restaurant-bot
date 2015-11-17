@@ -1,0 +1,4 @@
+<gridLayoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:rowDelay="50%"
+    android:directionPriority="column"
+    android:animation="@anim/fade" />
