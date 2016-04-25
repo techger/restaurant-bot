@@ -26,13 +26,17 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "===DatabaseHandler===";
     private static final int    DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME    = "dictionary5.db";
+    private static final String DATABASE_NAME    = "restaurant.db";
 
     public static final String TABLE_USERS   = "users";
     public static final String USER_ID       = "id";
     public static final String USER_NAME     = "name";
     public static final String USER_EMAIL    = "email";
     public static final String USER_PASSWORD = "password";
+
+    public static final String TABLE_PRODUCT   = "products";
+    public static final String PRODUCT_ID       = "id";
+    public static final String PRODUCT_NAME     = "name";
 
     private static final String[] PROJECTIONS_USERS = {USER_ID, USER_NAME, USER_EMAIL,USER_PASSWORD};
 
@@ -41,11 +45,19 @@ public class MyDBHelper extends SQLiteOpenHelper {
     private static final int USER_EMAIL_INDEX    = 2;
     private static final int USER_PASSWORD_INDEX = 3;
 
+    private static final String[] PROJECTIONS_PRODUCT = {PRODUCT_ID, PRODUCT_NAME};
+    private static final int PRODUCT_ID_INDEX    = 0;
+    private static final int PRODUCT_NAME_INDEX  = 1;
+
     private static final String CREATE_TABLE_USERS = "CREATE TABLE users (" +
             USER_ID + " INTEGER PRIMARY KEY," +
             USER_NAME + " TEXT," +
             USER_EMAIL + " TEXT," +
             USER_PASSWORD + " TEXT)";
+
+    private static final String CREATE_TABLE_PRODUCT = "CREATE TABLE " + TABLE_PRODUCT + " (" +
+            PRODUCT_ID + " INTEGER PRIMARY KEY,"+
+            PRODUCT_NAME + " TEXT)";
 
     public MyDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -56,9 +68,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL(CREATE_TABLE_USERS);
-
-        ContentValues contentValues = new ContentValues();
-        Resources resources = myContext.getResources();
+        db.execSQL(CREATE_TABLE_PRODUCT);
 
     }
     @Override
@@ -82,6 +92,8 @@ public class MyDBHelper extends SQLiteOpenHelper {
         db.insert(TABLE_USERS, null, cv);
         db.close();
     }
+
+
 
     public User getUser(int id) {
         SQLiteDatabase db = getReadableDatabase();
