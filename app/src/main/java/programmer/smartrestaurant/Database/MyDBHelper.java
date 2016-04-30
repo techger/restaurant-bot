@@ -291,6 +291,25 @@ public class MyDBHelper extends SQLiteOpenHelper {
         return rowCount;
     }
 
+    public int updateFood(Food food) {
+        if (food == null) {
+            return -1;
+        }
+        SQLiteDatabase db = getWritableDatabase();
+        if (db == null) {
+            return -1;
+        }
+        ContentValues cv = new ContentValues();
+        cv.put(FOOD_NAME, food.getName());
+        cv.put(FOOD_UNE, food.getUne());
+        cv.put(FOOD_TURUL,food.getTurul());
+        cv.put(FOOD_HEMJEE, food.getHemjee());
+        // Upating the row
+        int rowCount = db.update(TABLE_FOODS, cv, FOOD_NAME + "=?",
+                new String[]{String.valueOf(food.getName())});
+        db.close();
+        return rowCount;
+    }
     public void deleteUser(User user) {
         if (user == null) {
             return;

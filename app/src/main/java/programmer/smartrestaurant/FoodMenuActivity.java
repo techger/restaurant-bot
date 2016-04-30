@@ -25,7 +25,6 @@ public class FoodMenuActivity extends AppCompatActivity {
 
     ListView foodList;
     MyDBHelper myDBHelper;
-    public static final String PREFER_NAME = "SelectFood";
     private SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -38,7 +37,7 @@ public class FoodMenuActivity extends AppCompatActivity {
 
     public void init(){
         myDBHelper = new MyDBHelper(this);
-        sharedPreferences = getApplicationContext().getSharedPreferences(PREFER_NAME, 0);
+        sharedPreferences = getApplicationContext().getSharedPreferences(MainActivity.PREFER_NAME, 0);
         editor = sharedPreferences.edit();
         foodList = (ListView)findViewById(R.id.foodListView);
         final ArrayList<String> foodListItems = new ArrayList<String>();

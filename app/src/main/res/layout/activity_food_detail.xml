@@ -34,4 +34,11 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/hemjeeDetail" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Засах"
+        android:id="@+id/editButton"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

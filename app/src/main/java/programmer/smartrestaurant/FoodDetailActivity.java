@@ -1,12 +1,15 @@
 package programmer.smartrestaurant;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +19,14 @@ import programmer.smartrestaurant.Model.Food;
 
 public class FoodDetailActivity extends AppCompatActivity {
 
+    private SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     TextView name;
     TextView une;
     TextView turul;
     TextView hemjee;
+    Button edit;
 
     String nameText   = "";
     String uneText    = "";
@@ -42,9 +49,11 @@ public class FoodDetailActivity extends AppCompatActivity {
         une = (TextView)findViewById(R.id.uneDetail);
         turul = (TextView)findViewById(R.id.turulDetail);
         hemjee = (TextView)findViewById(R.id.hemjeeDetail);
+        edit = (Button)findViewById(R.id.editButton);
 
-        SharedPreferences prefs = getSharedPreferences(FoodMenuActivity.PREFER_NAME, 0);
-        String selectedFood = prefs.getString("SelectedFoodName", "");
+        sharedPreferences = getSharedPreferences(MainActivity.PREFER_NAME, 0);
+        String selectedFood = sharedPreferences.getString("SelectedFoodName", "");
+        editor = sharedPreferences.edit();
         Log.d("","================================================================================"+selectedFood);
         Food food = myDBHelper.getFood(selectedFood);
         nameText = food.getName();
@@ -56,6 +65,19 @@ public class FoodDetailActivity extends AppCompatActivity {
         une.setText(uneText);
         turul.setText(turulText);
         hemjee.setText(hemjeeText);
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putString("name", name.getText().toString());
+                editor.putString("une", une.getText().toString());
+                editor.putString("turul", turul.getText().toString());
+                editor.putString("hemjee", hemjee.getText().toString());
+                editor.commit();
+                Intent intent = new Intent(FoodDetailActivity.this, FoodEditActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

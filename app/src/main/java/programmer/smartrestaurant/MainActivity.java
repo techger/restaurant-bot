@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity
 
     private static final String TAG = "MainActivity";
     MyDBHelper myDBHelper;
+    public static final String PREFER_NAME = "Food";
+    private SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
