@@ -78,11 +78,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.search) {
-            Fragment MainFragment = new MainFragment();
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction fragmentTransaction= fm.beginTransaction();
-            fragmentTransaction.replace(R.id.container, MainFragment);
-            fragmentTransaction.commit();
+            Intent intent = new Intent(MainActivity.this, FoodMenuActivity.class);
+            startActivity(intent);
         } else if (id == R.id.cook) {
             Intent intent = new Intent(MainActivity.this, FoodAddActivity.class);
             startActivity(intent);

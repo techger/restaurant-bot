@@ -54,7 +54,7 @@ public class FoodAddActivity extends AppCompatActivity {
 //                } else {
 //                    startManagingCursor(foods);
 //                    if (foods.getCount() > 0){
-//                        Log.d("==ADD==","Бүртгэлтэй үг байна");
+//                        Log.d("==ADD==","Бүртгэлтэй хоол байна");
 //                        stopManagingCursor(foods);
 //                        foods.close();
 //                    } else {

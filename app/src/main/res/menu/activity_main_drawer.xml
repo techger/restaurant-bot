@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item android:id="@+id/search"
-            android:title="Хайх" />
+            android:title="Цэс харах" />
         <item android:id="@+id/cook"
-            android:title="Хоол" />
+            android:title="Хоол нэмэх" />
     </group>
 </menu>

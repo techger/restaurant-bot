@@ -12,4 +12,6 @@
     <string name="title_activity_food_add">FoodAddActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_food_edit">FoodEditActivity</string>
+    <string name="title_activity_food_menu">FoodMenuActivity</string>
 </resources>

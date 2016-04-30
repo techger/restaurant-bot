@@ -37,6 +37,14 @@
             android:name=".FoodAddActivity"
             android:label="@string/title_activity_food_add" >
         </activity>
+        <activity
+            android:name=".FoodEditActivity"
+            android:label="@string/title_activity_food_edit" >
+        </activity>
+        <activity
+            android:name=".FoodMenuActivity"
+            android:label="@string/title_activity_food_menu" >
+        </activity>
     </application>
 
 </manifest>

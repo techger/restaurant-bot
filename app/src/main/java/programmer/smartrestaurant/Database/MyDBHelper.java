@@ -27,7 +27,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "===DatabaseHandler===";
     private static final int    DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME    = "dictionary5.db";
+    private static final String DATABASE_NAME    = "restaurant1.db";
 
     public static final String TABLE_USERS   = "users";
     public static final String USER_ID       = "id";
@@ -35,12 +35,12 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public static final String USER_EMAIL    = "email";
     public static final String USER_PASSWORD = "password";
 
-    public static final String TABLE_FOODS = "foods";
-    public static final String FOOD_ID = "id";
-    public static final String FOOD_NAME = "name";
-    public static final String FOOD_UNE = "une";
-    public static final String FOOD_TURUL = "turul";
-    public static final String FOOD_HEMJEE = "hemjee";
+    public static final String TABLE_FOODS   = "foods";
+    public static final String FOOD_ID       = "id";
+    public static final String FOOD_NAME     = "name";
+    public static final String FOOD_UNE      = "une";
+    public static final String FOOD_TURUL    = "turul";
+    public static final String FOOD_HEMJEE   = "hemjee";
 
     private static final String[] PROJECTIONS_USERS = {USER_ID, USER_NAME, USER_EMAIL,USER_PASSWORD};
     private static final String[] PROJECTIONS_FOODS = {FOOD_ID, FOOD_NAME , FOOD_UNE, FOOD_TURUL, FOOD_HEMJEE};
@@ -70,7 +70,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
             FOOD_NAME + " TEXT," +
             FOOD_UNE + " TEXT," +
             FOOD_TURUL + " TEXT," +
-            FOOD_HEMJEE + "TEXT)";
+            FOOD_HEMJEE + " TEXT)";
 
 
     public MyDBHelper(Context context) {
@@ -83,6 +83,48 @@ public class MyDBHelper extends SQLiteOpenHelper {
     {
         db.execSQL(CREATE_TABLE_USERS);
         db.execSQL(CREATE_TABLE_FOODS);
+
+        ContentValues contentValues = new ContentValues();
+        Resources resources = myContext.getResources();
+
+        XmlResourceParser _xml = resources.getXml(R.xml.food);
+        try
+        {
+            //Check for end of document
+            int eventType = _xml.getEventType();
+            while (eventType != XmlPullParser.END_DOCUMENT) {
+                //Search for record tags
+                if ((eventType == XmlPullParser.START_TAG) &&(_xml.getName().equals("food"))){
+                    //Record tag found, now get values and insert record
+                    String name = _xml.getAttributeValue(null, FOOD_NAME);
+                    String une =  _xml.getAttributeValue(null, FOOD_UNE);
+                    String turul = _xml.getAttributeValue(null, FOOD_TURUL);
+                    String hemjee = _xml.getAttributeValue(null, FOOD_HEMJEE);
+                    contentValues.put(FOOD_NAME, name);
+                    contentValues.put(FOOD_UNE, une);
+                    contentValues.put(FOOD_TURUL, turul);
+                    contentValues.put(FOOD_HEMJEE, hemjee);
+                    db.insert(TABLE_FOODS, null, contentValues);
+                    Log.d(TAG,"XML-ээс амжилттай уншлаа...");
+                }
+                eventType = _xml.next();
+            }
+        }
+        //Catch errors
+        catch (XmlPullParserException e)
+        {
+            Log.d(TAG, e.getMessage(), e);
+        }
+        catch (IOException e)
+        {
+            Log.d(TAG, e.getMessage(), e);
+
+        }
+        finally
+        {
+            //Close the xml file
+            _xml.close();
+        }
 
     }
     @Override
