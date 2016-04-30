@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import programmer.smartrestaurant.Model.Food;
 import programmer.smartrestaurant.Model.User;
 import programmer.smartrestaurant.R;
 
@@ -26,7 +27,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "===DatabaseHandler===";
     private static final int    DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME    = "restaurant.db";
+    private static final String DATABASE_NAME    = "dictionary5.db";
 
     public static final String TABLE_USERS   = "users";
     public static final String USER_ID       = "id";
@@ -34,20 +35,27 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public static final String USER_EMAIL    = "email";
     public static final String USER_PASSWORD = "password";
 
-    public static final String TABLE_PRODUCT   = "products";
-    public static final String PRODUCT_ID       = "id";
-    public static final String PRODUCT_NAME     = "name";
+    public static final String TABLE_FOODS = "foods";
+    public static final String FOOD_NAME = "name";
+    public static final String FOOD_UNE = "number";
+    public static final String FOOD_TURUL = "turul";
+    public static final String FOOD_HEMJEE = "hemjee";
 
     private static final String[] PROJECTIONS_USERS = {USER_ID, USER_NAME, USER_EMAIL,USER_PASSWORD};
+    private static final String[] PROJECTIONS_FOODS = {FOOD_TURUL,FOOD_HEMJEE,FOOD_UNE,FOOD_NAME};
 
     private static final int USER_ID_INDEX       = 0;
     private static final int USER_NAME_INDEX     = 1;
     private static final int USER_EMAIL_INDEX    = 2;
     private static final int USER_PASSWORD_INDEX = 3;
 
-    private static final String[] PROJECTIONS_PRODUCT = {PRODUCT_ID, PRODUCT_NAME};
-    private static final int PRODUCT_ID_INDEX    = 0;
-    private static final int PRODUCT_NAME_INDEX  = 1;
+    private static final int FOOD_ID = 0;
+    private static final int FOOD_TURUL_INDEX     = 2;
+    private static final int FOOD_HEMJEE_INDEX    = 3;
+    private static final int FOOD_UNE_INDEX    = 4;
+    private static final int FOOD_NAME_INDEX = 1;
+
+
 
     private static final String CREATE_TABLE_USERS = "CREATE TABLE users (" +
             USER_ID + " INTEGER PRIMARY KEY," +
@@ -55,9 +63,13 @@ public class MyDBHelper extends SQLiteOpenHelper {
             USER_EMAIL + " TEXT," +
             USER_PASSWORD + " TEXT)";
 
-    private static final String CREATE_TABLE_PRODUCT = "CREATE TABLE " + TABLE_PRODUCT + " (" +
-            PRODUCT_ID + " INTEGER PRIMARY KEY,"+
-            PRODUCT_NAME + " TEXT)";
+    private static final String CREATE_TABLE_FOODS = "CREATE TABLE words (" +
+            FOOD_ID +"INTEGER PRIMARY KEY,"+
+            FOOD_NAME + " TEXT," +
+            FOOD_TURUL+ " TEXT," +
+            FOOD_UNE + " TEXT)" +
+            FOOD_HEMJEE + "TEXT";
+
 
     public MyDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -68,7 +80,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL(CREATE_TABLE_USERS);
-        db.execSQL(CREATE_TABLE_PRODUCT);
+        db.execSQL(CREATE_TABLE_FOODS);
 
     }
     @Override
@@ -92,8 +104,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
         db.insert(TABLE_USERS, null, cv);
         db.close();
     }
-
-
 
     public User getUser(int id) {
         SQLiteDatabase db = getReadableDatabase();
@@ -143,6 +153,27 @@ public class MyDBHelper extends SQLiteOpenHelper {
         return users;
     }
 
+    public List<Food> getAllFoods(){
+        List<Food> foods = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_FOODS;
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(FOOD_NAME_INDEX);
+                String une = cursor.getString(FOOD_UNE_INDEX);
+                String turul = cursor.getString(FOOD_TURUL_INDEX);
+                String hemjee = cursor.getString(FOOD_HEMJEE_INDEX);
+                Food food = new Food(name,une,turul,hemjee);
+                foods.add(food);
+            } while (cursor.moveToNext());
+        }
+
+        Log.d(TAG,""+foods);
+        cursor.close();
+        return foods;
+
+    }
     public int updateUser(User user) {
         if (user == null) {
             return -1;
@@ -173,6 +204,8 @@ public class MyDBHelper extends SQLiteOpenHelper {
         db.delete(TABLE_USERS, USER_ID + "=?", new String[]{String.valueOf(user.getUserId())});
         db.close();
     }
+
+
     public int getUserCount() {
         String query = "SELECT * FROM  " + TABLE_USERS;
         SQLiteDatabase db = getReadableDatabase();
@@ -187,5 +220,29 @@ public class MyDBHelper extends SQLiteOpenHelper {
             return;
         }
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
+    }
+
+
+
+    public void addFood(Food food){
+        if (food == null) {
+            return;
+        }
+        SQLiteDatabase db = getWritableDatabase();
+        if (db == null) {
+            return;
+        }
+        ContentValues cv = new ContentValues();
+
+
+        cv.put(FOOD_NAME, food.getName());
+        cv.put(FOOD_UNE, food.getUne());
+        cv.put(FOOD_TURUL, food.getTurul());
+        cv.put(FOOD_HEMJEE, food.getHemjee());
+
+
+        // Inserting Row
+        db.insert(TABLE_FOODS, null, cv);
+        db.close();
     }
 }
