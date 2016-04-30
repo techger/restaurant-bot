@@ -36,24 +36,26 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public static final String USER_PASSWORD = "password";
 
     public static final String TABLE_FOODS = "foods";
+    public static final String FOOD_ID = "id";
     public static final String FOOD_NAME = "name";
-    public static final String FOOD_UNE = "number";
+    public static final String FOOD_UNE = "une";
     public static final String FOOD_TURUL = "turul";
     public static final String FOOD_HEMJEE = "hemjee";
 
     private static final String[] PROJECTIONS_USERS = {USER_ID, USER_NAME, USER_EMAIL,USER_PASSWORD};
-    private static final String[] PROJECTIONS_FOODS = {FOOD_TURUL,FOOD_HEMJEE,FOOD_UNE,FOOD_NAME};
+    private static final String[] PROJECTIONS_FOODS = {FOOD_ID, FOOD_NAME , FOOD_UNE, FOOD_TURUL, FOOD_HEMJEE};
 
     private static final int USER_ID_INDEX       = 0;
     private static final int USER_NAME_INDEX     = 1;
     private static final int USER_EMAIL_INDEX    = 2;
     private static final int USER_PASSWORD_INDEX = 3;
 
-    private static final int FOOD_ID = 0;
-    private static final int FOOD_TURUL_INDEX     = 2;
-    private static final int FOOD_HEMJEE_INDEX    = 3;
-    private static final int FOOD_UNE_INDEX    = 4;
-    private static final int FOOD_NAME_INDEX = 1;
+    private static final int FOOD_ID_INDEX       = 0;
+    private static final int FOOD_NAME_INDEX     = 1;
+    private static final int FOOD_UNE_INDEX      = 2;
+    private static final int FOOD_TURUL_INDEX    = 3;
+    private static final int FOOD_HEMJEE_INDEX   = 4;
+
 
 
 
@@ -63,12 +65,12 @@ public class MyDBHelper extends SQLiteOpenHelper {
             USER_EMAIL + " TEXT," +
             USER_PASSWORD + " TEXT)";
 
-    private static final String CREATE_TABLE_FOODS = "CREATE TABLE words (" +
-            FOOD_ID +"INTEGER PRIMARY KEY,"+
+    private static final String CREATE_TABLE_FOODS = "CREATE TABLE foods (" +
+            FOOD_ID +" INTEGER PRIMARY KEY,"+
             FOOD_NAME + " TEXT," +
-            FOOD_TURUL+ " TEXT," +
-            FOOD_UNE + " TEXT)" +
-            FOOD_HEMJEE + "TEXT";
+            FOOD_UNE + " TEXT," +
+            FOOD_TURUL + " TEXT," +
+            FOOD_HEMJEE + "TEXT)";
 
 
     public MyDBHelper(Context context) {
@@ -86,6 +88,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         dropTable(TABLE_USERS);
+        dropTable(TABLE_FOODS);
         onCreate(db);
     }
     public void addUser(User user) {
@@ -102,6 +105,27 @@ public class MyDBHelper extends SQLiteOpenHelper {
         cv.put(USER_PASSWORD, user.getUserPassword());
         // Inserting Row
         db.insert(TABLE_USERS, null, cv);
+        db.close();
+    }
+
+
+    public void addFood(Food food){
+        if (food == null) {
+            return;
+        }
+        SQLiteDatabase db = getWritableDatabase();
+        if (db == null) {
+            return;
+        }
+        ContentValues cv = new ContentValues();
+
+
+        cv.put(FOOD_NAME, food.getName());
+        cv.put(FOOD_UNE, food.getUne());
+        cv.put(FOOD_TURUL, food.getTurul());
+        cv.put(FOOD_HEMJEE, food.getHemjee());
+
+        db.insert(TABLE_FOODS, null, cv);
         db.close();
     }
 
@@ -126,14 +150,27 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_USERS,new String[]{USER_ID,USER_NAME,USER_EMAIL,USER_PASSWORD},
-                USER_NAME +    "='" +username + "' AND " +
-                        USER_PASSWORD + "='"+password+"'",null,null,null,null);
+        Cursor cursor = db.query(TABLE_USERS, new String[]{USER_ID, USER_NAME, USER_EMAIL, USER_PASSWORD},
+                USER_NAME + "='" + username + "' AND " +
+                        USER_PASSWORD + "='" + password + "'", null, null, null, null);
         if (cursor != null){
             cursor.moveToFirst();
         }
         return cursor;
     }
+
+    public Cursor checkFood(String name){
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_FOODS, new String[]{FOOD_ID, FOOD_NAME, FOOD_UNE, FOOD_TURUL, FOOD_HEMJEE},
+                FOOD_NAME + "='" + name +  "'", null, null, null, null);
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         String selectQuery = "SELECT * FROM " + TABLE_USERS;
@@ -205,7 +242,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-
     public int getUserCount() {
         String query = "SELECT * FROM  " + TABLE_USERS;
         SQLiteDatabase db = getReadableDatabase();
@@ -220,29 +256,5 @@ public class MyDBHelper extends SQLiteOpenHelper {
             return;
         }
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
-    }
-
-
-
-    public void addFood(Food food){
-        if (food == null) {
-            return;
-        }
-        SQLiteDatabase db = getWritableDatabase();
-        if (db == null) {
-            return;
-        }
-        ContentValues cv = new ContentValues();
-
-
-        cv.put(FOOD_NAME, food.getName());
-        cv.put(FOOD_UNE, food.getUne());
-        cv.put(FOOD_TURUL, food.getTurul());
-        cv.put(FOOD_HEMJEE, food.getHemjee());
-
-
-        // Inserting Row
-        db.insert(TABLE_FOODS, null, cv);
-        db.close();
     }
 }

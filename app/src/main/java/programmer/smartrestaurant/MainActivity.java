@@ -1,8 +1,10 @@
 package programmer.smartrestaurant;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +20,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 import programmer.smartrestaurant.Database.MyDBHelper;
+import programmer.smartrestaurant.Model.Food;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -81,6 +84,9 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.container, MainFragment);
             fragmentTransaction.commit();
         } else if (id == R.id.cook) {
+            Intent intent = new Intent(MainActivity.this, FoodAddActivity.class);
+            startActivity(intent);
+
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
