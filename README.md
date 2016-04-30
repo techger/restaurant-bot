@@ -1,2 +1,1 @@
-## Restaurant
-Sample android restaurant application
+Sample android application
