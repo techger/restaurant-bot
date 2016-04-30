@@ -27,7 +27,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "===DatabaseHandler===";
     private static final int    DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME    = "restaurant1.db";
+    private static final String DATABASE_NAME    = "restaurant2.db";
 
     public static final String TABLE_USERS   = "users";
     public static final String USER_ID       = "id";
@@ -60,16 +60,16 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
 
     private static final String CREATE_TABLE_USERS = "CREATE TABLE users (" +
-            USER_ID + " INTEGER PRIMARY KEY," +
-            USER_NAME + " TEXT," +
-            USER_EMAIL + " TEXT," +
+            USER_ID       + " INTEGER PRIMARY KEY," +
+            USER_NAME     + " TEXT," +
+            USER_EMAIL    + " TEXT," +
             USER_PASSWORD + " TEXT)";
 
     private static final String CREATE_TABLE_FOODS = "CREATE TABLE foods (" +
-            FOOD_ID +" INTEGER PRIMARY KEY,"+
-            FOOD_NAME + " TEXT," +
-            FOOD_UNE + " TEXT," +
-            FOOD_TURUL + " TEXT," +
+            FOOD_ID     +" INTEGER PRIMARY KEY,"+
+            FOOD_NAME   + " TEXT," +
+            FOOD_UNE    + " TEXT," +
+            FOOD_TURUL  + " TEXT," +
             FOOD_HEMJEE + " TEXT)";
 
 
@@ -96,9 +96,9 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 //Search for record tags
                 if ((eventType == XmlPullParser.START_TAG) &&(_xml.getName().equals("food"))){
                     //Record tag found, now get values and insert record
-                    String name = _xml.getAttributeValue(null, FOOD_NAME);
-                    String une =  _xml.getAttributeValue(null, FOOD_UNE);
-                    String turul = _xml.getAttributeValue(null, FOOD_TURUL);
+                    String name =   _xml.getAttributeValue(null, FOOD_NAME);
+                    String une =    _xml.getAttributeValue(null, FOOD_UNE);
+                    String turul =  _xml.getAttributeValue(null, FOOD_TURUL);
                     String hemjee = _xml.getAttributeValue(null, FOOD_HEMJEE);
                     contentValues.put(FOOD_NAME, name);
                     contentValues.put(FOOD_UNE, une);
@@ -188,6 +188,25 @@ public class MyDBHelper extends SQLiteOpenHelper {
         cursor.close();
         return user;
     }
+    public Food getFood(String name) {
+        SQLiteDatabase db = getReadableDatabase();
+        if (db == null) {
+            return null;
+        }
+        Cursor cursor = db.query(TABLE_FOODS, PROJECTIONS_FOODS, FOOD_NAME + "=?",
+                new String[]{String.valueOf(name)}, null, null, null, null);
+        if (!cursor.moveToFirst()) {
+            return null;
+        }
+        Food food = new Food(
+                cursor.getString(FOOD_NAME_INDEX),
+                cursor.getString(FOOD_UNE_INDEX),
+                cursor.getString(FOOD_TURUL_INDEX),
+                cursor.getString(FOOD_HEMJEE_INDEX));
+        cursor.close();
+        return food;
+    }
+
     public Cursor checkUser(String username,String password){
 
         SQLiteDatabase db = getReadableDatabase();

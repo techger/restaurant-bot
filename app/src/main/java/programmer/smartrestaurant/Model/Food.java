@@ -5,7 +5,6 @@ package programmer.smartrestaurant.Model;
  */
 
 public class Food {
-    private int _id;
     private String name ;
     private String une;
     private String turul;
@@ -14,13 +13,6 @@ public class Food {
     public Food(){
 
     }
-    public Food(int  id ,String name, String une, String turul, String hemjee){
-        this._id = id;
-        this.name = name;
-        this.une = une;
-        this.turul = turul;
-        this.hemjee = hemjee;
-    }
 
     public Food(String name, String une, String turul, String hemjee){
         this.name = name;
@@ -28,10 +20,6 @@ public class Food {
         this.turul = turul;
         this.hemjee = hemjee;
     }
-    public int getID(){ return this._id;
-    }
-    public void setID(int id){
-        this ._id= id;}
     public String getName() {
         return name;
     }

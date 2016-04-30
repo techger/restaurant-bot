@@ -45,6 +45,10 @@
             android:name=".FoodMenuActivity"
             android:label="@string/title_activity_food_menu" >
         </activity>
+        <activity
+            android:name=".FoodDetailActivity"
+            android:label="@string/title_activity_food_detail" >
+        </activity>
     </application>
 
 </manifest>
