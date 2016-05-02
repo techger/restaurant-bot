@@ -73,7 +73,15 @@ public class FoodEditActivity extends AppCompatActivity {
                 myDBHelper.updateFood(new Food(nametext,unetext,turultext,hemjeetext));
                 Snackbar.make(v, "Үг амжилттай засагдлаа...", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                
+
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String names = name.getText().toString();
+
             }
         });
 

@@ -211,7 +211,6 @@ public class SignUpActivity extends AppCompatActivity {
             digest.update(s.getBytes());
             byte messageDigest[] = digest.digest();
 
-
             StringBuffer hexString = new StringBuffer();
             for (int i=0; i<messageDigest.length; i++)
                 hexString.append(Integer.toHexString(0xFF & messageDigest[i]));

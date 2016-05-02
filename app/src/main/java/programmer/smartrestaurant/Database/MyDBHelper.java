@@ -310,15 +310,15 @@ public class MyDBHelper extends SQLiteOpenHelper {
         db.close();
         return rowCount;
     }
-    public void deleteUser(User user) {
-        if (user == null) {
+    public void deleteFood(Food food) {
+        if (food == null) {
             return;
         }
         SQLiteDatabase db = getWritableDatabase();
         if (db == null) {
             return;
         }
-        db.delete(TABLE_USERS, USER_ID + "=?", new String[]{String.valueOf(user.getUserId())});
+        db.delete(TABLE_FOODS, FOOD_NAME + "=?", new String[]{String.valueOf(food.getName())});
         db.close();
     }
 

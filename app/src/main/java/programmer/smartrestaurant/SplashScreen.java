@@ -19,12 +19,12 @@ public class SplashScreen extends AppCompatActivity {
         try {
             Thread timerThread = new Thread(){
                 public void run(){
-                    try{
+                    try {
                         sleep(5000);
-                    }catch(InterruptedException e){
+                    } catch(InterruptedException e){
                         e.printStackTrace();
-                    }finally{
-                        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                    } finally {
+                        Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
                     }
