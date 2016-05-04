@@ -50,7 +50,7 @@ public class FoodMenuActivity extends AppCompatActivity {
         try {
             Log.d("===FOODS===", "Inserting foods...");
             for (Food food : foods){
-                String foodAdd = food.getName();
+                String foodAdd = food.getName() + "                              " + food.getUne();
                 Log.d("===FOOD VIEW===",foodAdd);
                 foodListItems.add(0, foodAdd);
             }
