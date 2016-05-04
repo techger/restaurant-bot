@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Restaurant</string>
+    <string name="app_name">Ресторан</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_splash_screen">Толь бичиг</string>
+    <string name="title_activity_splash_screen"></string>
     <string name="title_activity_tweened_animation">TweenedAnimation</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -9,7 +9,7 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_food_add">FoodAddActivity</string>
+    <string name="title_activity_food_add">Хоол нэмэх хэсэг</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_food_edit">FoodEditActivity</string>
