@@ -1,9 +1,8 @@
-package programmer.smartrestaurant;
+package com.menu;
 
 /**
  * Created by ToRoo on 11/17/2015.
  */
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -23,8 +22,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import programmer.smartrestaurant.Database.MyDBHelper;
-import programmer.smartrestaurant.Model.User;
+import com.menu.Database.MyDBHelper;
+import com.menu.Model.User;
 
 
 public class SignUpActivity extends AppCompatActivity {

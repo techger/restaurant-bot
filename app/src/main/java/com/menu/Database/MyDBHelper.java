@@ -1,4 +1,4 @@
-package programmer.smartrestaurant.Database;
+package com.menu.Database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -14,9 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import programmer.smartrestaurant.Model.Food;
-import programmer.smartrestaurant.Model.User;
-import programmer.smartrestaurant.R;
+import com.menu.Model.Food;
+import com.menu.Model.User;
+import com.menu.R;
 
 /**
  * Created by Byambaa on 10/25/2015.

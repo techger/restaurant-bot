@@ -1,10 +1,8 @@
-package programmer.smartrestaurant;
+package com.menu;
 /**
  * Created by ToRoo on 11/17/2015.
  */
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;

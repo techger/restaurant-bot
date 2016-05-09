@@ -1,4 +1,4 @@
-package programmer.smartrestaurant;
+package com.menu;
 
 import org.junit.Test;
 

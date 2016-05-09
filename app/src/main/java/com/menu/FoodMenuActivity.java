@@ -1,8 +1,5 @@
-package programmer.smartrestaurant;
+package com.menu;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -18,8 +15,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import programmer.smartrestaurant.Database.MyDBHelper;
-import programmer.smartrestaurant.Model.Food;
+import com.menu.Database.MyDBHelper;
+import com.menu.Model.Food;
 
 public class FoodMenuActivity extends AppCompatActivity {
 
@@ -50,7 +47,7 @@ public class FoodMenuActivity extends AppCompatActivity {
         try {
             Log.d("===FOODS===", "Inserting foods...");
             for (Food food : foods){
-                String foodAdd = food.getName() + "                              " + food.getUne();
+                String foodAdd = food.getName();
                 Log.d("===FOOD VIEW===",foodAdd);
                 foodListItems.add(0, foodAdd);
             }

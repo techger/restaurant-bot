@@ -1,6 +1,5 @@
-package programmer.smartrestaurant;
+package com.menu;
 
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,8 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import programmer.smartrestaurant.Database.MyDBHelper;
-import programmer.smartrestaurant.Model.Food;
+import com.menu.Database.MyDBHelper;
+import com.menu.Model.Food;
 
 public class FoodAddActivity extends AppCompatActivity {
 

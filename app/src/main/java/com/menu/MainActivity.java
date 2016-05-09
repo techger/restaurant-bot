@@ -1,5 +1,4 @@
-package programmer.smartrestaurant;
-import android.app.Activity;
+package com.menu;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -17,13 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 
-import java.util.ArrayList;
-import java.util.List;
-import programmer.smartrestaurant.Database.MyDBHelper;
-import programmer.smartrestaurant.Model.Food;
+import com.menu.Database.MyDBHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{

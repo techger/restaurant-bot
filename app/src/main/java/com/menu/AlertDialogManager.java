@@ -1,4 +1,4 @@
-package programmer.smartrestaurant;
+package com.menu;
 
 /**
  * Created by ToRoo on 11/17/2015.

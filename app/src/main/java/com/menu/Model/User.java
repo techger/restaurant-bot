@@ -1,4 +1,4 @@
-package programmer.smartrestaurant.Model;
+package com.menu.Model;
 
 /**
  * Created by Byambaa on 10/25/2015.

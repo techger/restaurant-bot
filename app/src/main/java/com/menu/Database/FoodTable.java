@@ -1,4 +1,4 @@
-package programmer.smartrestaurant.Database;
+package com.menu.Database;
 
 /**
  * Created by Programmer on 5/1/2016.

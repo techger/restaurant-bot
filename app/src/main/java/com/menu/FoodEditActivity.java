@@ -1,4 +1,4 @@
-package programmer.smartrestaurant;
+package com.menu;
 
 import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import programmer.smartrestaurant.Database.MyDBHelper;
-import programmer.smartrestaurant.Model.Food;
+import com.menu.Database.MyDBHelper;
+import com.menu.Model.Food;
 
 public class FoodEditActivity extends AppCompatActivity {
 

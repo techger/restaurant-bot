@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="programmer.smartrestaurant" >
+    package="com.menu" >
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SplashScreen"
+            android:name="com.menu.SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -19,34 +19,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.menu.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.menu.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".SignUpActivity"
+            android:name="com.menu.SignUpActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".FoodAddActivity"
+            android:name="com.menu.FoodAddActivity"
             android:label="@string/title_activity_food_add" >
         </activity>
         <activity
-            android:name=".FoodEditActivity"
+            android:name="com.menu.FoodEditActivity"
             android:label="@string/title_activity_food_edit" >
         </activity>
         <activity
-            android:name=".FoodMenuActivity"
+            android:name="com.menu.FoodMenuActivity"
             android:label="@string/title_activity_food_menu" >
         </activity>
         <activity
-            android:name=".FoodDetailActivity"
+            android:name="com.menu.FoodDetailActivity"
             android:label="@string/title_activity_food_detail" >
         </activity>
     </application>

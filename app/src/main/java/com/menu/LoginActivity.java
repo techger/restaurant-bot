@@ -1,4 +1,4 @@
-package programmer.smartrestaurant;
+package com.menu;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -21,7 +21,7 @@ import android.widget.Toast;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import programmer.smartrestaurant.Database.MyDBHelper;
+import com.menu.Database.MyDBHelper;
 
 /**
  * Created by ToRoo on 11/17/2015.
