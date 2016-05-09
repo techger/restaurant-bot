@@ -70,7 +70,7 @@ public class FoodEditActivity extends AppCompatActivity {
                 String turultext = turul.getText().toString();
                 String hemjeetext = hemjee.getText().toString();
 
-                myDBHelper.updateFood(new Food(nametext,unetext,turultext,hemjeetext));
+                myDBHelper.updateFood(new Food(nametext,unetext,turultext,hemjeetext,hemjeetext));
                 Snackbar.make(v, "Үг амжилттай засагдлаа...", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 

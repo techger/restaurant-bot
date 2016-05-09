@@ -1,5 +1,7 @@
 package com.menu;
 
+import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,11 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.menu.Database.MyDBHelper;
 import com.menu.Model.Food;
 
 public class FoodAddActivity extends AppCompatActivity {
+
+    static final int REQUEST_IMAGE_CAPTURE = 1002;
 
     EditText name;
     EditText une;
@@ -20,6 +25,9 @@ public class FoodAddActivity extends AppCompatActivity {
     EditText hemjee;
     Button save;
     MyDBHelper myDBHelper;
+    Button pictureButton;
+    ImageView picture;
+    boolean hasBitmap = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,19 @@ public class FoodAddActivity extends AppCompatActivity {
         une = (EditText)findViewById(R.id.uneEditText);
         turul = (EditText)findViewById(R.id.turulEditText);
         hemjee = (EditText)findViewById(R.id.hemjeeEditText);
+        pictureButton = (Button) this.findViewById(R.id.addButtonSetPicture);
+        picture = (ImageView) this.findViewById(R.id.addImage);
+
+        pictureButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                 }
+             }
+         }
+        );
         save = (Button)findViewById(R.id.addFoodButton);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +66,7 @@ public class FoodAddActivity extends AppCompatActivity {
 
 //                Cursor foods = myDBHelper.checkFood(nametext);
 
-                myDBHelper.addFood(new Food(nametext, unetext, turultext, hemjeetext));
+                myDBHelper.addFood(new Food(nametext, unetext, turultext, hemjeetext , hemjeetext));
                 Log.d("===ADD===","Амжилттай нэмлээ");
 
 //                if (foods == null){

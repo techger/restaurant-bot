@@ -41,9 +41,10 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public static final String FOOD_UNE      = "une";
     public static final String FOOD_TURUL    = "turul";
     public static final String FOOD_HEMJEE   = "hemjee";
+    public static final String FOOD_IMAGE    = "image";
 
     private static final String[] PROJECTIONS_USERS = {USER_ID, USER_NAME, USER_EMAIL,USER_PASSWORD};
-    private static final String[] PROJECTIONS_FOODS = {FOOD_ID, FOOD_NAME , FOOD_UNE, FOOD_TURUL, FOOD_HEMJEE};
+    private static final String[] PROJECTIONS_FOODS = {FOOD_ID, FOOD_NAME , FOOD_UNE, FOOD_TURUL, FOOD_HEMJEE, FOOD_IMAGE};
 
     private static final int USER_ID_INDEX       = 0;
     private static final int USER_NAME_INDEX     = 1;
@@ -55,6 +56,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     private static final int FOOD_UNE_INDEX      = 2;
     private static final int FOOD_TURUL_INDEX    = 3;
     private static final int FOOD_HEMJEE_INDEX   = 4;
+    private static final int FOOD_IMAGE_INDEX    = 5;
 
 
 
@@ -70,7 +72,8 @@ public class MyDBHelper extends SQLiteOpenHelper {
             FOOD_NAME   + " TEXT," +
             FOOD_UNE    + " TEXT," +
             FOOD_TURUL  + " TEXT," +
-            FOOD_HEMJEE + " TEXT)";
+            FOOD_HEMJEE + " TEXT," +
+            FOOD_IMAGE  + " TEXT)";
 
 
     public MyDBHelper(Context context) {
@@ -202,7 +205,8 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 cursor.getString(FOOD_NAME_INDEX),
                 cursor.getString(FOOD_UNE_INDEX),
                 cursor.getString(FOOD_TURUL_INDEX),
-                cursor.getString(FOOD_HEMJEE_INDEX));
+                cursor.getString(FOOD_HEMJEE_INDEX),
+                cursor.getString(FOOD_IMAGE_INDEX));
         cursor.close();
         return food;
     }
@@ -262,7 +266,8 @@ public class MyDBHelper extends SQLiteOpenHelper {
                 String une = cursor.getString(FOOD_UNE_INDEX);
                 String turul = cursor.getString(FOOD_TURUL_INDEX);
                 String hemjee = cursor.getString(FOOD_HEMJEE_INDEX);
-                Food food = new Food(name,une,turul,hemjee);
+                String image = cursor.getString(FOOD_IMAGE_INDEX);
+                Food food = new Food(name,une,turul,hemjee, image);
                 foods.add(food);
             } while (cursor.moveToNext());
         }
