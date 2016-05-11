@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.menu.Database.FoodAdapter;
 import com.menu.Database.MyDBHelper;
 import com.menu.Model.Food;
 
@@ -26,7 +27,7 @@ public class FoodEditActivity extends AppCompatActivity {
     Button save;
     Button delete;
 
-    MyDBHelper myDBHelper;
+    FoodAdapter foodAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class FoodEditActivity extends AppCompatActivity {
 
     public void init(){
 
-        myDBHelper = new MyDBHelper(this);
+        foodAdapter = new FoodAdapter(this);
 
         sharedPreferences = getApplicationContext().getSharedPreferences(MainActivity.PREFER_NAME, 0);
         editor = sharedPreferences.edit();
@@ -70,7 +71,7 @@ public class FoodEditActivity extends AppCompatActivity {
                 String turultext = turul.getText().toString();
                 String hemjeetext = hemjee.getText().toString();
 
-                myDBHelper.updateFood(new Food(nametext,unetext,turultext,hemjeetext,hemjeetext));
+                foodAdapter.updateFood(new Food(nametext,unetext,turultext,hemjeetext,hemjeetext));
                 Snackbar.make(v, "Үг амжилттай засагдлаа...", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 

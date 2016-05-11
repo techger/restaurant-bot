@@ -15,13 +15,14 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.menu.Database.FoodAdapter;
 import com.menu.Database.MyDBHelper;
 import com.menu.Model.Food;
 
 public class FoodMenuActivity extends AppCompatActivity {
 
     ListView foodList;
-    MyDBHelper myDBHelper;
+    FoodAdapter foodAdapter;
     private SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -33,7 +34,7 @@ public class FoodMenuActivity extends AppCompatActivity {
     }
 
     public void init(){
-        myDBHelper = new MyDBHelper(this);
+        foodAdapter = new FoodAdapter(this);
         sharedPreferences = getApplicationContext().getSharedPreferences(MainActivity.PREFER_NAME, 0);
         editor = sharedPreferences.edit();
         foodList = (ListView)findViewById(R.id.foodListView);
@@ -42,7 +43,7 @@ public class FoodMenuActivity extends AppCompatActivity {
         myArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,foodListItems);
         foodList.setAdapter(myArrayAdapter);
 
-        List<Food> foods = myDBHelper.getAllFoods();
+        List<Food> foods = foodAdapter.getAllFoods();
 
         try {
             Log.d("===FOODS===", "Inserting foods...");

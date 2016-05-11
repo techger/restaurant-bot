@@ -23,6 +23,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import com.menu.Database.MyDBHelper;
+import com.menu.Database.UserAdapter;
 import com.menu.Model.User;
 
 
@@ -30,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private static final String TAG = "SignUpActivity";
     AlertDialogManager alert = new AlertDialogManager();
-    MyDBHelper myDBHelper;
+    UserAdapter userAdapter;
     public SharedPreferences sharedPreferences;
     Editor editor;
     EditText nameEditText, emailEditText, passwordEditText, confirmPasswordEditText;
@@ -43,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        myDBHelper = new MyDBHelper(this);
+        userAdapter = new UserAdapter(this);
 
         nameEditText = (EditText)findViewById(R.id.sName);
         emailEditText = (EditText)findViewById(R.id.sEmail);
@@ -107,10 +108,10 @@ public class SignUpActivity extends AppCompatActivity {
         String name = nameEditText.getText().toString();
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-        myDBHelper.addUser(new User(name, email, password));
+        userAdapter.addUser(new User(name, email, password));
 
 
-        List<User> userInfo = myDBHelper.getAllUsers();
+        List<User> userInfo = userAdapter.getAllUsers();
 
         for (User users : userInfo){
             String log = "ID:"+users.getUserId() + "\nNAME:"+users.getUserName()+
@@ -170,7 +171,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         //password = PasswordHashes(password);
 
-        Cursor user = myDBHelper.checkUser(name,password);
+        Cursor user = userAdapter.checkUser(name,password);
 
         if(user == null){
             alert.showAlertDialog(SignUpActivity.this,"Error","Database query error",false);

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.menu.Database.FoodAdapter;
 import com.menu.Database.MyDBHelper;
 import com.menu.Model.Food;
 
@@ -24,7 +25,7 @@ public class FoodAddActivity extends AppCompatActivity {
     EditText turul;
     EditText hemjee;
     Button save;
-    MyDBHelper myDBHelper;
+    FoodAdapter foodAdapter;
     Button pictureButton;
     ImageView picture;
     boolean hasBitmap = false;
@@ -37,7 +38,7 @@ public class FoodAddActivity extends AppCompatActivity {
     }
 
     public void init(){
-        myDBHelper = new MyDBHelper(this);
+        foodAdapter = new FoodAdapter(this);
         name = (EditText)findViewById(R.id.foodNameEditText);
         une = (EditText)findViewById(R.id.uneEditText);
         turul = (EditText)findViewById(R.id.turulEditText);
@@ -66,7 +67,7 @@ public class FoodAddActivity extends AppCompatActivity {
 
 //                Cursor foods = myDBHelper.checkFood(nametext);
 
-                myDBHelper.addFood(new Food(nametext, unetext, turultext, hemjeetext , hemjeetext));
+                foodAdapter.addFood(new Food(nametext, unetext, turultext, hemjeetext , hemjeetext));
                 Log.d("===ADD===","Амжилттай нэмлээ");
 
 //                if (foods == null){

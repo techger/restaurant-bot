@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.menu.Database.FoodAdapter;
 import com.menu.Database.MyDBHelper;
 import com.menu.Model.Food;
 
@@ -30,7 +31,7 @@ public class FoodDetailActivity extends AppCompatActivity {
     String turulText  = "";
     String hemjeeText = "";
 
-    MyDBHelper myDBHelper;
+    FoodAdapter foodAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class FoodDetailActivity extends AppCompatActivity {
     }
 
     public void init(){
-        myDBHelper = new MyDBHelper(this);
+        foodAdapter = new FoodAdapter(this);
 
         name = (TextView)findViewById(R.id.nameDetail);
         une = (TextView)findViewById(R.id.uneDetail);
@@ -52,7 +53,7 @@ public class FoodDetailActivity extends AppCompatActivity {
         String selectedFood = sharedPreferences.getString("SelectedFoodName", "");
         editor = sharedPreferences.edit();
         Log.d("","================================================================================"+selectedFood);
-        Food food = myDBHelper.getFood(selectedFood);
+        Food food = foodAdapter.getFood(selectedFood);
         nameText = food.getName();
         uneText = food.getUne();
         turulText = food.getTurul();
