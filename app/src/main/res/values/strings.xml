@@ -10,9 +10,15 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_food_add">Хоол нэмэх хэсэг</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_food_edit">FoodEditActivity</string>
     <string name="title_activity_food_menu">FoodMenuActivity</string>
     <string name="title_activity_food_detail">FoodDetailActivity</string>
+    <string-array name="turul_names">
+        <item>1dugeer</item>
+        <item>2dugaar</item>
+        <item>Uuh</item>
+        <item>Zuush</item>
+        <item>Nemelt</item>
+    </string-array>
 </resources>

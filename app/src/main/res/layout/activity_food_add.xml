@@ -42,19 +42,23 @@
                 android:layout_gravity="center_horizontal" />
         </android.support.design.widget.TextInputLayout>
 
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/turulEditText"
-                android:inputType="textCapWords"
                 android:hint="Хоолны төрөл"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"/>
+
+
         </android.support.design.widget.TextInputLayout>
+
+
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
