@@ -51,6 +51,10 @@ public class Food {
         this.hemjee = hemjee;
     }
 
+    public Food(){
+
+    }
+
     public Food(String name, String une, String turul, String hemjee, String imageName) {
         this.name = name;
         this.une = une;
