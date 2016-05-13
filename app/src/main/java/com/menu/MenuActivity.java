@@ -63,19 +63,19 @@ public class MenuActivity extends AppCompatActivity {
 
     public void displayUpdate() {
         menu_title = (TextView) findViewById(R.id.item_title);
-        ;
+
         title = data.get(currentCount % currentLength).getTitle();
         menu_title.setText(title);
 
         menu_cost = menu_title = (TextView) findViewById(R.id.cost_text_view_menu);
-        ;
+
         cost = data.get(currentCount % currentLength).getCost();
         menu_cost.setText("$ " + new DecimalFormat("#.##").format(cost));
 
         menu_image = (ImageView) findViewById(R.id.item_image);
         image_title = data.get(currentCount % currentLength).getImage();
         int resID = getResources().getIdentifier(image_title, "drawable", "com.menu");
-        menu_image.setImageResource(resID);
+//        menu_image.setImageResource(resID);
 
         description = data.get(currentCount % currentLength).getDescription();
         totalCost = data.get(currentCount % currentLength).getTotalCost();
