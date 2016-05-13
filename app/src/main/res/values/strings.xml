@@ -44,4 +44,5 @@
     <string name="title_activity_order">OrderActivity</string>
     <string name="title_activity_menu_edit">MenuEditActivity</string>
     <string name="title_activity_payment">PaymentActivity</string>
+    <string name="title_activity_close">CloseActivity</string>
 </resources>

@@ -24,7 +24,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "===DatabaseHandler===";
     private static final int    DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME    = "restaurant2.db";
+    private static final String DATABASE_NAME    = "restaurant.db";
 
     private static final String CREATE_TABLE_USERS = "CREATE TABLE users (" +
             UserAdapter.USER_ID       + " INTEGER PRIMARY KEY," +
@@ -39,15 +39,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
             FoodAdapter.FOOD_TURUL  + " TEXT," +
             FoodAdapter.FOOD_HEMJEE + " TEXT," +
             FoodAdapter.FOOD_IMAGE  + " TEXT)";
-
-
-    public static final String PRODUCT_TITLE       = "title";
-    public static final String PRODUCT_DESCRIPTION = "description";
-    public static final String PRODUCT_RATING      = "rating";
-    public static final String PRODUCT_COST        = "cost";
-    public static final String PRODUCT_IMAGE       = "image";
-    public static final String PRODUCT_TOTAL_COST  = "totalcost";
-    public static final String PRODUCT_TOTAL_ORDER = "totalorder";
 
     private static final String CREATE_TABLE_PRODUCTS = "CREATE TABLE "+ProductAdapter.TABLE_PRODUCT +" ("+
             ProductAdapter.PRODUCT_ID       + " INTEGER PRIMARY KEY," +

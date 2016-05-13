@@ -73,6 +73,10 @@
             android:name=".PaymentActivity"
             android:label="@string/title_activity_payment" >
         </activity>
+        <activity
+            android:name=".CloseActivity"
+            android:label="@string/title_activity_close" >
+        </activity>
     </application>
 
 </manifest>
