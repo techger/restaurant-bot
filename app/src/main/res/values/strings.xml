@@ -40,4 +40,5 @@
     <string name="action_share">Хуваалцах</string>
     <string name="thankyou">Баярлалаа!</string>
     <string name="close_app"></string>
+    <string name="title_activity_menu_detail">MenuDetailActivity</string>
 </resources>
