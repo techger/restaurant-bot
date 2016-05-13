@@ -59,6 +59,16 @@ public class MyDBHelper extends SQLiteOpenHelper {
             ProductAdapter.PRODUCT_TOTAL_COST    + " TEXT,"+
             ProductAdapter.PRODUCT_TOTAL_ORDER    + " TEXT,";
 
+    private static final String CREATE_TABLE_PRODUCT_MAIN = "CREATE TABLE "+MenuAdapter.TABLE_PRODUCT +" ("+
+            MenuAdapter.PRODUCT_ID       + " INTEGER PRIMARY KEY," +
+            MenuAdapter.PRODUCT_TITLE    + " TEXT,"+
+            MenuAdapter.PRODUCT_DESCRIPTION    + " TEXT,"+
+            MenuAdapter.PRODUCT_RATING    + " TEXT,"+
+            MenuAdapter.PRODUCT_COST    + " TEXT,"+
+            MenuAdapter.PRODUCT_IMAGE    + " TEXT,"+
+            MenuAdapter.PRODUCT_TOTAL_COST    + " TEXT,"+
+            MenuAdapter.PRODUCT_TOTAL_ORDER    + " TEXT,";
+
     public MyDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         myContext = context;
@@ -70,6 +80,8 @@ public class MyDBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_USERS);
         db.execSQL(CREATE_TABLE_FOODS);
         db.execSQL(CREATE_TABLE_PRODUCTS);
+        db.execSQL(CREATE_TABLE_PRODUCT_MAIN);
+
 
         ContentValues contentValues = new ContentValues();
         Resources resources = myContext.getResources();

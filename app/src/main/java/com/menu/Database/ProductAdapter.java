@@ -81,9 +81,9 @@ public class ProductAdapter extends MyDBHelper{
                 PRODUCT_ID,
                 PRODUCT_TITLE,
                 PRODUCT_DESCRIPTION,
-                PRODUCT_RATING,
                 PRODUCT_COST,
                 PRODUCT_IMAGE,
+                PRODUCT_RATING,
                 PRODUCT_TOTAL_COST,
                 PRODUCT_TOTAL_ORDER
         };

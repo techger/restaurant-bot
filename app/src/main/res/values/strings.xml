@@ -15,4 +15,29 @@
     <string name="title_activity_food_edit">FoodEditActivity</string>
     <string name="title_activity_food_menu">FoodMenuActivity</string>
     <string name="title_activity_food_detail">FoodDetailActivity</string>
+    <string name="title_activity_menu">MenuActivity</string>
+
+    <string name="previous_item"> Өмнөх </string>
+    <string name="order_item"> Дэлгэрэнгүй</string>
+    <string name="next_item"> Дараах</string>
+    <string name="title_activity_detail_page">Цэс</string>
+    <string name="increase_order">+</string>
+    <string name="submit_order">Сагсанд хийх</string>
+    <string name="edit_submit_order">Хадгалах</string>
+    <string name="decrease_order">-</string>
+    <string name="title_activity_item_ordered">Сагс</string>
+    <string name="delete">Устгах</string>
+    <string name="edit">Засах</string>
+    <string name="start_payment_button">Төлбөр төлөх</string>
+    <string name="make_payment_button">Төлбөр төлөх</string>
+    <string name="title_activity_edit_detail_page">Menu</string>
+    <string name="title_activity_payment_screen">Төлбөр</string>
+    <string name="customer_name">Хэрэглэгчийн нэр</string>
+    <string name="customer_address">Хэрэглэгчийн хаяг</string>
+    <string name="customer_card_number">Картын дугаар</string>
+    <string name="customer_security_code">Нууц код</string>
+    <string name="title_activity_close_screen">Төлбөр</string>
+    <string name="action_share">Хуваалцах</string>
+    <string name="thankyou">Баярлалаа!</string>
+    <string name="close_app"></string>
 </resources>

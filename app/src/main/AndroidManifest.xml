@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.menu" >
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.menu.SplashScreen"
+            android:name=".SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -21,35 +23,39 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.menu.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="com.menu.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="com.menu.SignUpActivity"
+            android:name=".SignUpActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="com.menu.FoodAddActivity"
+            android:name=".FoodAddActivity"
             android:label="@string/title_activity_food_add" >
         </activity>
         <activity
-            android:name="com.menu.FoodEditActivity"
+            android:name=".FoodEditActivity"
             android:label="@string/title_activity_food_edit" >
         </activity>
         <activity
-            android:name="com.menu.FoodMenuActivity"
+            android:name=".FoodMenuActivity"
             android:label="@string/title_activity_food_menu" >
         </activity>
         <activity
-            android:name="com.menu.FoodDetailActivity"
+            android:name=".FoodDetailActivity"
             android:label="@string/title_activity_food_detail" >
+        </activity>
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu" >
         </activity>
     </application>
 
