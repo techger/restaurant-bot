@@ -41,4 +41,7 @@
     <string name="thankyou">Баярлалаа!</string>
     <string name="close_app"></string>
     <string name="title_activity_menu_detail">MenuDetailActivity</string>
+    <string name="title_activity_order">OrderActivity</string>
+    <string name="title_activity_menu_edit">MenuEditActivity</string>
+    <string name="title_activity_payment">PaymentActivity</string>
 </resources>
