@@ -1,22 +1,19 @@
 package com.menu.Database;
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
+import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.menu.R;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-import android.content.res.Resources;
-import android.content.res.XmlResourceParser;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.menu.Model.Food;
-import com.menu.Model.User;
-import com.menu.R;
+import java.io.IOException;
 
 /**
  * Created by Byambaa on 10/25/2015.
@@ -43,6 +40,25 @@ public class MyDBHelper extends SQLiteOpenHelper {
             FoodAdapter.FOOD_HEMJEE + " TEXT," +
             FoodAdapter.FOOD_IMAGE  + " TEXT)";
 
+
+    public static final String PRODUCT_TITLE       = "title";
+    public static final String PRODUCT_DESCRIPTION = "description";
+    public static final String PRODUCT_RATING      = "rating";
+    public static final String PRODUCT_COST        = "cost";
+    public static final String PRODUCT_IMAGE       = "image";
+    public static final String PRODUCT_TOTAL_COST  = "totalcost";
+    public static final String PRODUCT_TOTAL_ORDER = "totalorder";
+
+    private static final String CREATE_TABLE_PRODUCTS = "CREATE TABLE "+ProductAdapter.TABLE_PRODUCT +" ("+
+            ProductAdapter.PRODUCT_ID       + " INTEGER PRIMARY KEY," +
+            ProductAdapter.PRODUCT_TITLE    + " TEXT,"+
+            ProductAdapter.PRODUCT_DESCRIPTION    + " TEXT,"+
+            ProductAdapter.PRODUCT_RATING    + " TEXT,"+
+            ProductAdapter.PRODUCT_COST    + " TEXT,"+
+            ProductAdapter.PRODUCT_IMAGE    + " TEXT,"+
+            ProductAdapter.PRODUCT_TOTAL_COST    + " TEXT,"+
+            ProductAdapter.PRODUCT_TOTAL_ORDER    + " TEXT,";
+
     public MyDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         myContext = context;
@@ -53,6 +69,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     {
         db.execSQL(CREATE_TABLE_USERS);
         db.execSQL(CREATE_TABLE_FOODS);
+        db.execSQL(CREATE_TABLE_PRODUCTS);
 
         ContentValues contentValues = new ContentValues();
         Resources resources = myContext.getResources();
@@ -101,6 +118,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         dropTable(UserAdapter.TABLE_USERS);
         dropTable(FoodAdapter.TABLE_FOODS);
+        dropTable(ProductAdapter.TABLE_PRODUCT);
         onCreate(db);
     }
     public void dropTable(String tableName) {
@@ -110,6 +128,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         }
         db.execSQL("DROP TABLE IF EXISTS " + UserAdapter.TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + FoodAdapter.TABLE_FOODS);
+        db.execSQL("DROP TABLE IF EXISTS " + ProductAdapter.TABLE_PRODUCT);
     }
 
 }
