@@ -48,7 +48,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
             ProductAdapter.PRODUCT_COST    + " TEXT,"+
             ProductAdapter.PRODUCT_IMAGE    + " TEXT,"+
             ProductAdapter.PRODUCT_TOTAL_COST    + " TEXT,"+
-            ProductAdapter.PRODUCT_TOTAL_ORDER    + " TEXT,";
+            ProductAdapter.PRODUCT_TOTAL_ORDER    + " TEXT)";
 
     private static final String CREATE_TABLE_PRODUCT_MAIN = "CREATE TABLE "+MenuAdapter.TABLE_PRODUCT +" ("+
             MenuAdapter.PRODUCT_ID       + " INTEGER PRIMARY KEY," +
@@ -58,7 +58,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
             MenuAdapter.PRODUCT_COST    + " TEXT,"+
             MenuAdapter.PRODUCT_IMAGE    + " TEXT,"+
             MenuAdapter.PRODUCT_TOTAL_COST    + " TEXT,"+
-            MenuAdapter.PRODUCT_TOTAL_ORDER    + " TEXT,";
+            MenuAdapter.PRODUCT_TOTAL_ORDER    + " TEXT)";
 
     public MyDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

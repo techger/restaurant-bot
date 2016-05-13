@@ -40,10 +40,8 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        imageView = (ImageView) findViewById(R.id.imageView2);
 
         MenuAdapter menu = new MenuAdapter(this);
-        menu.clearDatabase();
         menu.addDataToALLMenu(item1);
         menu.addDataToALLMenu(item2);
         menu.addDataToALLMenu(item3);
@@ -58,7 +56,7 @@ public class SplashScreen extends AppCompatActivity {
                     } catch(InterruptedException e){
                         e.printStackTrace();
                     } finally {
-                        Intent intent = new Intent(SplashScreen.this, MenuAdapter.class);
+                        Intent intent = new Intent(SplashScreen.this, MenuActivity.class);
                         startActivity(intent);
                         finish();
                     }
