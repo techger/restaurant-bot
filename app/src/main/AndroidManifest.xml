@@ -61,6 +61,18 @@
             android:name=".MenuDetailActivity"
             android:label="@string/title_activity_menu_detail" >
         </activity>
+        <activity
+            android:name=".OrderActivity"
+            android:label="@string/title_activity_order" >
+        </activity>
+        <activity
+            android:name=".MenuEditActivity"
+            android:label="@string/title_activity_menu_edit" >
+        </activity>
+        <activity
+            android:name=".PaymentActivity"
+            android:label="@string/title_activity_payment" >
+        </activity>
     </application>
 
 </manifest>

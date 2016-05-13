@@ -3,7 +3,6 @@ package com.menu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -98,7 +97,7 @@ public class MenuActivity extends AppCompatActivity {
     public void showListItem(View view) {
         if (productAdapter.readData().size() > 0) {
             Intent intent;
-            intent = new Intent(this, ItemOrdered.class);
+            intent = new Intent(this, OrderActivity.class);
             startActivity(intent);
             productAdapter.close();
         }

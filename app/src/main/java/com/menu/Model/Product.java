@@ -9,7 +9,7 @@ public class Product {
     String description;
     double cost;
     String image;
-    double totalCost;
+    public double totalCost;
     int totalOrder;
     double ratinng;
 
