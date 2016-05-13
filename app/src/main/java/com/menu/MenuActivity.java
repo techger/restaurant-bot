@@ -86,7 +86,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void selectItem(View view) {
-        Intent intent = new Intent(this, DetailPage.class);
+        Intent intent = new Intent(this, MenuDetailActivity.class);
         String cost_string = "" + cost;
         String totalCost_string = "" + totalCost;
         String totalOrder_string = "" + totalOrder;
