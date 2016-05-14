@@ -18,20 +18,20 @@ import java.text.DecimalFormat;
 
 public class MenuEditActivity extends AppCompatActivity {
 
-    TextView menu_title_view;
-    TextView description_view;
-    TextView menu_cost_view;
-    TextView total_order_view;
-    TextView total_cost_view;
-    String menu_title_string;
-    String menu_description_string;
-    String menu_cost_string;
-    String totalCost_string;
-    String totalOrder_string;
-    double menu_cost_double;
-    double toal_cost_double;
-    int total_order;
-    String image_title_string;
+    TextView menuTitleView;
+    TextView descriptionView;
+    TextView menuCostView;
+    TextView totalOrderView;
+    TextView totalCostView;
+    String menuTitleString;
+    String menuDescriptionString;
+    String menuCostString;
+    String totalCostString;
+    String totalOrderString;
+    double menuCostDouble;
+    double totalCostDouble;
+    int totalOrder;
+    String imageTitleString;
     String ratingString;
     double rating;
     RatingBar ratingBar;
@@ -44,15 +44,15 @@ public class MenuEditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_edit);
         Intent intent = getIntent();
-        menu_title_string = intent.getStringArrayExtra(OrderFragment.TAG)[0];
-        menu_description_string = intent.getStringArrayExtra(OrderFragment.TAG)[1];
-        menu_cost_string =  intent.getStringArrayExtra(OrderFragment.TAG)[2];
-        menu_cost_double = toal_cost_double = Double.parseDouble(menu_cost_string);
-        totalCost_string =  intent.getStringArrayExtra(OrderFragment.TAG)[3];
-        toal_cost_double = Double.parseDouble(totalCost_string);
-        totalOrder_string =  intent.getStringArrayExtra(OrderFragment.TAG)[4];
-        total_order = Integer.parseInt(totalOrder_string);
-        image_title_string = intent.getStringArrayExtra(OrderFragment.TAG)[5];
+        menuTitleString = intent.getStringArrayExtra(OrderFragment.TAG)[0];
+        menuDescriptionString = intent.getStringArrayExtra(OrderFragment.TAG)[1];
+        menuCostString =  intent.getStringArrayExtra(OrderFragment.TAG)[2];
+        menuCostDouble = totalCostDouble = Double.parseDouble(menuCostString);
+        totalCostString =  intent.getStringArrayExtra(OrderFragment.TAG)[3];
+        totalCostDouble = Double.parseDouble(totalCostString);
+        totalOrderString =  intent.getStringArrayExtra(OrderFragment.TAG)[4];
+        totalOrder = Integer.parseInt(totalOrderString);
+        imageTitleString = intent.getStringArrayExtra(OrderFragment.TAG)[5];
         ratingString = intent.getStringArrayExtra(OrderFragment.TAG)[6];
         rating = Double.parseDouble(ratingString);
         displayData();
@@ -66,7 +66,7 @@ public class MenuEditActivity extends AppCompatActivity {
         // Get the provider and hold onto it to set/change the share intent.
         mShareActionProvider = (android.support.v7.widget.ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
         // If onLoadFinished happens before this, we can go ahead and set the share intent now.
-        if (menu_description_string != null && menu_cost_string != null && menu_title_string!=null) {
+        if (menuDescriptionString != null && menuCostString != null && menuTitleString !=null) {
             mShareActionProvider.setShareIntent(createShareForecastIntent());
         }
         return true;
@@ -75,7 +75,7 @@ public class MenuEditActivity extends AppCompatActivity {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         shareIntent.setType("text/plain");
-        String inentMsg = "Мэдээлэл: "+menu_title_string + "\n" + menu_description_string +".\n" + "Үнэ: $" + menu_cost_string;
+        String inentMsg = "Мэдээлэл: "+ menuTitleString + "\n" + menuDescriptionString +".\n" + "Үнэ: $" + menuCostString;
         shareIntent.putExtra(Intent.EXTRA_TEXT, inentMsg);
         return shareIntent;
     }
@@ -97,24 +97,24 @@ public class MenuEditActivity extends AppCompatActivity {
     }
 
     public void increaseTotalCost(View view){
-        total_order++;
-        toal_cost_double += menu_cost_double;
+        totalOrder++;
+        totalCostDouble += menuCostDouble;
         displayUpdate();
     }
 
     public void decreaseTotalCost(View view){
-        total_order = (--total_order < 1) ? 1 : total_order;
-        toal_cost_double -= menu_cost_double;
-        toal_cost_double = (toal_cost_double < menu_cost_double) ? menu_cost_double : toal_cost_double;
+        totalOrder = (--totalOrder < 1) ? 1 : totalOrder;
+        totalCostDouble -= menuCostDouble;
+        totalCostDouble = (totalCostDouble < menuCostDouble) ? menuCostDouble : totalCostDouble;
         displayUpdate();
     }
 
     public void displayData(){
-        menu_title_view = (TextView) findViewById(R.id.menu_title);;
-        menu_title_view.setText(menu_title_string);
+        menuTitleView = (TextView) findViewById(R.id.menu_title);;
+        menuTitleView.setText(menuTitleString);
 
-        menu_cost_view = (TextView) findViewById(R.id.cost_text_view);
-        menu_cost_view.setText("Үнэ: $ "+ menu_cost_string);
+        menuCostView = (TextView) findViewById(R.id.cost_text_view);
+        menuCostView.setText("Үнэ: $ " + menuCostString);
 
         ratingBar = (RatingBar)findViewById(R.id.ratingBar);
         ratingBar.setRating((float)rating);
@@ -123,20 +123,20 @@ public class MenuEditActivity extends AppCompatActivity {
     }
 
     public void displayUpdate(){
-        total_cost_view = (TextView) findViewById(R.id.total_cost_text_view);
-        total_cost_view.setText("Нийт үнэ: $ " + new DecimalFormat("#.##").format(toal_cost_double));
+        totalCostView = (TextView) findViewById(R.id.total_cost_text_view);
+        totalCostView.setText("Нийт үнэ: $ " + new DecimalFormat("#.##").format(totalCostDouble));
 
-        total_order_view = (TextView) findViewById(R.id.total_item_number);
-        total_order_view.setText("Тоо: " + total_order);
+        totalOrderView = (TextView) findViewById(R.id.total_item_number);
+        totalOrderView.setText("Тоо: " + totalOrder);
 
-        description_view = (TextView) findViewById(R.id.description_text_view);;
-        description_view.setText(menu_description_string);
+        descriptionView = (TextView) findViewById(R.id.description_text_view);;
+        descriptionView.setText(menuDescriptionString);
     }
 
     public void addToList(View view){
 
         ProductAdapter productAdapter = new ProductAdapter(this);
-        Product item = new Product(menu_title_string,menu_description_string,menu_cost_double,image_title_string,toal_cost_double,total_order);
+        Product item = new Product(menuTitleString, menuDescriptionString, menuCostDouble, imageTitleString, totalCostDouble, totalOrder);
         ratingBar = (RatingBar)findViewById(R.id.ratingBar);
         rating = ratingBar.getRating();
         item.setRatinng(rating);
