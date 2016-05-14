@@ -26,12 +26,12 @@ public class MenuActivity extends AppCompatActivity {
 
     int currentCount = SplashScreen.currentCount;
     int currentLength;
-    TextView menu_title;
+    TextView menuTitle;
     String title;
-    TextView menu_cost;
+    TextView menuCost;
     double cost;
-    ImageView menu_image;
-    String image_title;
+    ImageView menuImage;
+    String imageTitle;
     String description;
     int totalOrder;
     double totalCost;
@@ -62,19 +62,19 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void displayUpdate() {
-        menu_title = (TextView) findViewById(R.id.item_title);
+        menuTitle = (TextView) findViewById(R.id.item_title);
 
         title = data.get(currentCount % currentLength).getTitle();
-        menu_title.setText(title);
+        menuTitle.setText(title);
 
-        menu_cost = menu_title = (TextView) findViewById(R.id.cost_text_view_menu);
+        menuCost = menuTitle = (TextView) findViewById(R.id.cost_text_view_menu);
 
         cost = data.get(currentCount % currentLength).getCost();
-        menu_cost.setText("$ " + new DecimalFormat("#.##").format(cost));
+        menuCost.setText("$ " + new DecimalFormat("#.##").format(cost));
 
-        menu_image = (ImageView) findViewById(R.id.item_image);
-        image_title = data.get(currentCount % currentLength).getImage();
-        int resID = getResources().getIdentifier(image_title, "drawable", "com.menu");
+        menuImage = (ImageView) findViewById(R.id.item_image);
+        imageTitle = data.get(currentCount % currentLength).getImage();
+        int resID = getResources().getIdentifier(imageTitle, "drawable", "com.menu");
 //        menu_image.setImageResource(resID);
 
         description = data.get(currentCount % currentLength).getDescription();
@@ -86,11 +86,11 @@ public class MenuActivity extends AppCompatActivity {
 
     public void selectItem(View view) {
         Intent intent = new Intent(this, MenuDetailActivity.class);
-        String cost_string = "" + cost;
-        String totalCost_string = "" + totalCost;
-        String totalOrder_string = "" + totalOrder;
-        String[] transfer_data = {title, description, cost_string, totalCost_string, totalOrder_string, image_title};
-        intent.putExtra(TAG, transfer_data);
+        String costString = "" + cost;
+        String totalCostString = "" + totalCost;
+        String totalOrderString = "" + totalOrder;
+        String[] transferData = {title, description, costString, totalCostString, totalOrderString, imageTitle};
+        intent.putExtra(TAG, transferData);
         startActivity(intent);
     }
 
