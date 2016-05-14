@@ -82,7 +82,7 @@ public class PaymentActivity extends AppCompatActivity {
         String customer_security_code = customer_security_code_view.getText().toString().trim();
         double customer_security_code_double;
         try {
-            if (customer_card_number.length() == 12) {
+            if (customer_card_number.length() == 8) {
                 customer_card_number_double = Double.parseDouble(customer_card_number);
             } else {
                 customer_card_number_view.setText("");

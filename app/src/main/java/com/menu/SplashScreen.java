@@ -1,6 +1,6 @@
 package com.menu;
 /**
- * Created by ToRoo on 11/17/2015.
+ * Created by Tortuvshin on 11/17/2015.
  */
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,7 +56,7 @@ public class SplashScreen extends AppCompatActivity {
                     } catch(InterruptedException e){
                         e.printStackTrace();
                     } finally {
-                        Intent intent = new Intent(SplashScreen.this, MenuActivity.class);
+                        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                     }

@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity
                 Object o = lv1.getItemAtPosition(position);
                 ItemDetails obj_itemDetails = (ItemDetails) o;
                 Toast.makeText(MainActivity.this, "You have chosen : " + " " + obj_itemDetails.getName(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(intent);
             }
         });
     }
