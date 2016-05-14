@@ -146,8 +146,8 @@ public class MenuEditActivity extends AppCompatActivity {
     }
 
     public void deleteFromList(View view){
-        TextView menu_title = (TextView) findViewById(R.id.menu_title);
-        String title = (String) menu_title.getText();
+        TextView menuTitle = (TextView) findViewById(R.id.menu_title);
+        String title = (String) menuTitle.getText();
         productAdapter = new ProductAdapter(this);
         productAdapter.deleteProduct(title);
         if (productAdapter.readData().size() >0){

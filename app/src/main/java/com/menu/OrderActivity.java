@@ -19,10 +19,10 @@ public class OrderActivity extends AppCompatActivity {
 
     public final static String  TAG = "com.menu";
     final ProductAdapter productAdapter = new ProductAdapter(this);
-    TextView sub_total_view;
-    TextView tax_view;
-    TextView total_view;
-    double sub_total;
+    TextView subTotalView;
+    TextView taxView;
+    TextView totalView;
+    double subTotal;
     double tax;
     double total;
     ArrayList<Product> data;
@@ -59,34 +59,34 @@ public class OrderActivity extends AppCompatActivity {
 
 
     public void calculateBill(){
-        sub_total = tax = total = 0;
+        subTotal = tax = total = 0;
         for(Product dat : data){
-            sub_total += dat.getTotalCost();
+            subTotal += dat.getTotalCost();
         }
-        tax = sub_total*0.15;
-        total = tax + sub_total;
+        tax = subTotal*0.15;
+        total = tax + subTotal;
     }
 
     public void displayBill(){
         calculateBill();
-        sub_total_view = (TextView) findViewById(R.id.sub_total_text_view);
-        sub_total_view.setText("Нийт дүн: $ " + new DecimalFormat("#.##").format(sub_total));
+        subTotalView = (TextView) findViewById(R.id.sub_total_text_view);
+        subTotalView.setText("Нийт дүн: $ " + new DecimalFormat("#.##").format(subTotal));
 
-        tax_view = (TextView) findViewById(R.id.tax_text_view);
-        tax_view.setText("Дүн: $ " + new DecimalFormat("#.##").format(tax));
+        taxView = (TextView) findViewById(R.id.tax_text_view);
+        taxView.setText("Татвар: $ " + new DecimalFormat("#.##").format(tax));
 
-        total_view = (TextView) findViewById(R.id.total_text_view);
-        total_view.setText("Нийт: $ " + new DecimalFormat("#.##").format(total));
+        totalView = (TextView) findViewById(R.id.total_text_view);
+        totalView.setText("Нийт: $ " + new DecimalFormat("#.##").format(total));
     }
 
     public void startPayment(View view){
         if (data.size() > 0){
             Intent intent = new Intent(this, PaymentActivity.class);
-            String subTotal_string = "" + sub_total;
-            String tax_string = "" + tax;
-            String total_string = "" + total;
-            String[] transfer_data = {subTotal_string,tax_string,total_string};
-            intent.putExtra(TAG,transfer_data);
+            String subTotalString = "" + subTotal;
+            String taxString = "" + tax;
+            String totalString = "" + total;
+            String[] transferData = {subTotalString,taxString,totalString};
+            intent.putExtra(TAG,transferData);
             startActivity(intent);
         }
     }

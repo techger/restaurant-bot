@@ -13,9 +13,9 @@ import java.text.DecimalFormat;
 
 public class PaymentActivity extends AppCompatActivity {
 
-    TextView sub_total_view;
-    TextView tax_view;
-    TextView total_view;
+    TextView subTotalView;
+    TextView taxView;
+    TextView totalView;
     double subTotal;
     double tax;
     double total;
@@ -25,12 +25,12 @@ public class PaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
         Intent intent = getIntent();
-        String subTotal_string = intent.getStringArrayExtra(MenuActivity.TAG)[0];
-        subTotal = Double.parseDouble(subTotal_string);
-        String tax_string = intent.getStringArrayExtra(MenuActivity.TAG)[1];
-        tax = Double.parseDouble(tax_string);
-        String total_string = intent.getStringArrayExtra(MenuActivity.TAG)[2];
-        total = Double.parseDouble(total_string);
+        String subTotalString = intent.getStringArrayExtra(MenuActivity.TAG)[0];
+        subTotal = Double.parseDouble(subTotalString);
+        String taxString = intent.getStringArrayExtra(MenuActivity.TAG)[1];
+        tax = Double.parseDouble(taxString);
+        String totalString = intent.getStringArrayExtra(MenuActivity.TAG)[2];
+        total = Double.parseDouble(totalString);
         displayBill();
 
     }
@@ -59,48 +59,48 @@ public class PaymentActivity extends AppCompatActivity {
 
 
     public void displayBill() {
-        sub_total_view = (TextView) findViewById(R.id.sub_total_text_view);
-        sub_total_view.setText("Дүн: $ " + new DecimalFormat("#.##").format(subTotal));
+        subTotalView = (TextView) findViewById(R.id.sub_total_text_view);
+        subTotalView.setText("Дүн: $ " + new DecimalFormat("#.##").format(subTotal));
 
-        tax_view = (TextView) findViewById(R.id.tax_text_view);
-        tax_view.setText("Татвар: $ " + new DecimalFormat("#.##").format(tax));
+        taxView = (TextView) findViewById(R.id.tax_text_view);
+        taxView.setText("Татвар: $ " + new DecimalFormat("#.##").format(tax));
 
-        total_view = (TextView) findViewById(R.id.total_text_view);
-        total_view.setText("Нийт: $ " + new DecimalFormat("#.##").format(total));
+        totalView = (TextView) findViewById(R.id.total_text_view);
+        totalView.setText("Нийт: $ " + new DecimalFormat("#.##").format(total));
     }
 
     public void makePayment(View view) {
         boolean done = true;
-        EditText customer_name_view = (EditText) findViewById(R.id.customer_name);
-        String customer_name = customer_name_view.getText().toString().trim();
-        EditText customer_address_view = (EditText) findViewById(R.id.customer_address);
-        String customer_address = customer_address_view.getText().toString().trim();
-        EditText customer_card_number_view = (EditText) findViewById(R.id.customer_card_number);
-        String customer_card_number = customer_card_number_view.getText().toString().trim();
-        double customer_card_number_double;
-        EditText customer_security_code_view = (EditText) findViewById(R.id.customer_security_code);
-        String customer_security_code = customer_security_code_view.getText().toString().trim();
-        double customer_security_code_double;
+        EditText customerNameView = (EditText) findViewById(R.id.customer_name);
+        String customerName = customerNameView.getText().toString().trim();
+        EditText customerAddressView = (EditText) findViewById(R.id.customer_address);
+        String customerAddress = customerAddressView.getText().toString().trim();
+        EditText customerCardNumberView = (EditText) findViewById(R.id.customer_card_number);
+        String customerCardNumber = customerCardNumberView.getText().toString().trim();
+        double customerCardNumberDouble;
+        EditText customerSecurityCodeView = (EditText) findViewById(R.id.customer_security_code);
+        String customerSecurityCode = customerSecurityCodeView.getText().toString().trim();
+        double customerSecurityCodeDouble;
         try {
-            if (customer_card_number.length() == 8) {
-                customer_card_number_double = Double.parseDouble(customer_card_number);
+            if (customerCardNumber.length() == 8) {
+                customerCardNumberDouble = Double.parseDouble(customerCardNumber);
             } else {
-                customer_card_number_view.setText("");
+                customerCardNumberView.setText("");
                 done = false;
             }
         } catch (NumberFormatException e) {
-            customer_card_number_view.setText("");
+            customerCardNumberView.setText("");
             done = false;
         }
         try {
-            if (customer_security_code.length() == 3 || customer_security_code.length() == 4) {
-                customer_security_code_double = Double.parseDouble(customer_security_code);
+            if (customerSecurityCode.length() == 3 || customerSecurityCode.length() == 4) {
+                customerSecurityCodeDouble = Double.parseDouble(customerSecurityCode);
             } else {
-                customer_security_code_view.setText("");
+                customerSecurityCodeView.setText("");
                 done = false;
             }
         } catch (NumberFormatException e) {
-            customer_security_code_view.setText("");
+            customerSecurityCodeView.setText("");
             done = false;
         }
         if (done) {

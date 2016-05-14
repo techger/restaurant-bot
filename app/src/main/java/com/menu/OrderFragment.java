@@ -59,13 +59,13 @@ public class OrderFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 String title = dataList.get(position).get("Title");
                 Product item = productAdapter.findByTitle(title);
-                String cost_string = "" + item.getCost();
-                String totalCost_string = "" + item.totalCost;
-                String totalOrder_string = "" + item.getTotalOrder();
+                String costString = "" + item.getCost();
+                String totalCostString = "" + item.totalCost;
+                String totalOrderString = "" + item.getTotalOrder();
                 String ratingString = "" + item.getRatinng();
-                String[] transfer_data = {item.getTitle(), item.getDescription(), cost_string, totalCost_string, totalOrder_string, item.getImage(),ratingString};
+                String[] transferData = {item.getTitle(), item.getDescription(), costString, totalCostString, totalOrderString, item.getImage(),ratingString};
                 Intent intent = new Intent(getActivity(), MenuEditActivity.class);
-                intent.putExtra(TAG, transfer_data);
+                intent.putExtra(TAG, transferData);
                 startActivity(intent);
             }
         });
