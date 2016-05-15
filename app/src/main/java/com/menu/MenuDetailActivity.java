@@ -60,6 +60,7 @@ public class MenuDetailActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_menu_detail, menu);
         MenuItem menuItem = menu.findItem(R.id.action_share);
+        MenuItem menuItem1 = menu.findItem(R.id.action_refresh);
         // Get the provider and hold onto it to set/change the share intent.
         mShareActionProvider = (android.support.v7.widget.ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
         // If onLoadFinished happens before this, we can go ahead and set the share intent now.
