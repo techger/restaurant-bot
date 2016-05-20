@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -27,6 +28,9 @@ public class MenuDetailActivity extends AppCompatActivity {
     String menuCostString;
     String totalCostString;
     String totalOrderString;
+    Button increaseTotalCostButton;
+    Button decreaseTotalCostButton;
+    Button addToListButton;
     double menuCostDouble;
     double totalCostDouble;
     int totalOrder;
@@ -41,6 +45,9 @@ public class MenuDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_detail);
         Intent intent = getIntent();
 
+        increaseTotalCostButton = (Button)findViewById(R.id.increaseTotalCostButton);
+        addToListButton = (Button)findViewById(R.id.addToListButton);
+        decreaseTotalCostButton = (Button)findViewById(R.id.decreaseTotalCostButton);
         menuTitleString = intent.getStringArrayExtra(MenuActivity.TAG)[0];
         menuDescriptionString = intent.getStringArrayExtra(MenuActivity.TAG)[1];
         menuCostString = intent.getStringArrayExtra(MenuActivity.TAG)[2];
@@ -53,6 +60,27 @@ public class MenuDetailActivity extends AppCompatActivity {
         rating =(RatingBar)findViewById(R.id.ratingBar);
         displayRating();
         displayData();
+
+        increaseTotalCostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                increaseTotalCost();
+            }
+        });
+
+        decreaseTotalCostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                decreaseTotalCost();
+            }
+        });
+
+        addToListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addToList();
+            }
+        });
     }
 
     @Override
@@ -96,13 +124,13 @@ public class MenuDetailActivity extends AppCompatActivity {
     }
 
 
-    public void increaseTotalCost(View view) {
+    public void increaseTotalCost() {
         totalOrder++;
         totalCostDouble += menuCostDouble;
         displayUpdate();
     }
 
-    public void decreaseTotalCost(View view) {
+    public void decreaseTotalCost() {
         totalOrder = (--totalOrder < 1) ? 1 : totalOrder;
         totalCostDouble -= menuCostDouble;
         totalCostDouble = (totalCostDouble < menuCostDouble) ? menuCostDouble : totalCostDouble;
@@ -138,7 +166,7 @@ public class MenuDetailActivity extends AppCompatActivity {
 
     }
 
-    public void addToList(View view) {
+    public void addToList() {
         ProductAdapter productAdapter = new ProductAdapter(this);;
         ratingValue = rating.getRating();
         Product item = new Product(menuTitleString, menuDescriptionString, menuCostDouble, imageTitleString, totalCostDouble, totalOrder);

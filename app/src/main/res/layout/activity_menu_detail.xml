@@ -73,10 +73,10 @@
 
         <Button
             android:layout_width="0dp"
+            android:id="@+id/increaseTotalCostButton"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="increaseTotalCost"
             android:text="@string/increase_order" />
 
         <Button
@@ -84,15 +84,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="addToList"
+            android:id="@+id/addToListButton"
             android:text="@string/submit_order" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.50"
             android:gravity="center"
-            android:onClick="decreaseTotalCost"
+            android:id="@+id/decreaseTotalCostButton"
             android:text="@string/decrease_order" />
 
     </LinearLayout>
