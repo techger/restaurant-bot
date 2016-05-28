@@ -75,7 +75,7 @@ public class MenuActivity extends AppCompatActivity {
         menuImage = (ImageView) findViewById(R.id.item_image);
         imageTitle = data.get(currentCount % currentLength).getImage();
         int resID = getResources().getIdentifier(imageTitle, "drawable", "com.menu");
-//        menu_image.setImageResource(resID);
+        menuImage.setImageResource(resID);
 
         description = data.get(currentCount % currentLength).getDescription();
         totalCost = data.get(currentCount % currentLength).getTotalCost();

@@ -73,49 +73,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_PRODUCTS);
         db.execSQL(CREATE_TABLE_PRODUCT_MAIN);
 
-
-        ContentValues contentValues = new ContentValues();
-        Resources resources = myContext.getResources();
-
-        XmlResourceParser _xml = resources.getXml(R.xml.food);
-        try
-        {
-            //Check for end of document
-            int eventType = _xml.getEventType();
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                //Search for record tags
-                if ((eventType == XmlPullParser.START_TAG) &&(_xml.getName().equals("food"))){
-                    //Record tag found, now get values and insert record
-                    String name =   _xml.getAttributeValue(null, FoodAdapter.FOOD_NAME);
-                    String une =    _xml.getAttributeValue(null, FoodAdapter.FOOD_UNE);
-                    String turul =  _xml.getAttributeValue(null, FoodAdapter.FOOD_TURUL);
-                    String hemjee = _xml.getAttributeValue(null, FoodAdapter.FOOD_HEMJEE);
-                    contentValues.put(FoodAdapter.FOOD_NAME, name);
-                    contentValues.put(FoodAdapter.FOOD_UNE, une);
-                    contentValues.put(FoodAdapter.FOOD_TURUL, turul);
-                    contentValues.put(FoodAdapter.FOOD_HEMJEE, hemjee);
-                    db.insert(FoodAdapter.TABLE_FOODS, null, contentValues);
-                    Log.d(TAG,"XML-ээс амжилттай уншлаа...");
-                }
-                eventType = _xml.next();
-            }
-        }
-        //Catch errors
-        catch (XmlPullParserException e)
-        {
-            Log.d(TAG, e.getMessage(), e);
-        }
-        catch (IOException e)
-        {
-            Log.d(TAG, e.getMessage(), e);
-
-        }
-        finally
-        {
-            //Close the xml file
-            _xml.close();
-        }
-
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
