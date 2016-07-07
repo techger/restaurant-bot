@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Deprecated
 public class FoodAddActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1002;

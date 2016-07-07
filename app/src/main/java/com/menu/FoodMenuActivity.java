@@ -19,6 +19,8 @@ import com.menu.Database.FoodAdapter;
 import com.menu.Database.MyDBHelper;
 import com.menu.Model.Food;
 
+
+@Deprecated
 public class FoodMenuActivity extends AppCompatActivity {
 
     ListView foodList;

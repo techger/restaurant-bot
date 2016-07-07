@@ -14,7 +14,7 @@ import android.widget.EditText;
 import com.menu.Database.FoodAdapter;
 import com.menu.Database.MyDBHelper;
 import com.menu.Model.Food;
-
+@Deprecated
 public class FoodEditActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
