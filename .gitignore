@@ -5,3 +5,8 @@
 .DS_Store
 /build
 /captures
+/app/app.iml
+restapp.iml
+/.idea/*
+restaurant-android.iml
+

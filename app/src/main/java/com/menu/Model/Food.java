@@ -3,7 +3,7 @@ package com.menu.Model;
 /**
  * Created by tsenguun on 4/30/2016.
  */
-
+@Deprecated
 public class Food {
     private String name ;
     private String une;
