@@ -5,6 +5,7 @@
 [![Programmer](
 https://img.shields.io/badge/programmer-toroo-green.svg)](https://tortuvshin.github.io)
 
+<<<<<<< HEAD
 
 This is an Android application that can be used for providing a digital menu for a restaurant.
 
@@ -28,3 +29,6 @@ Please see [Contribution Guidelines][CONTRIBUTION]. Fork this repository and con
 
 [SETUP]: https://github.com/tortuvshin/restaurant-android/blob/master/doc/SETUP.md
 [CONTRIBUTION]: https://github.com/tortuvshin/restaurant-android/blob/master/doc/CONTRIBUTING.md
+=======
+This is an Android application that can be used for providing a digital menu for a restaurant.
+>>>>>>> 1ae9d240cfd440d79aac7cc7b455f1bdfe704410
